@@ -8,9 +8,19 @@ import sys
 def main():
     numbers = []
     for line in sys.stdin:
-        numbers.append(float(line.strip()))
+        line = line.strip()
+        if line:
+            numbers.append(float(line))
 
-    print(f"sum: {sum(numbers):g}")
+    n = len(numbers)
+    total = sum(numbers)
+    mean = total / n
+
+    print(f"count: {n}")
+    print(f"sum: {total:g}")
+    print(f"mean: {mean:g}")
+    print(f"min: {min(numbers):g}")
+    print(f"max: {max(numbers):g}")
 
 
 if __name__ == "__main__":
