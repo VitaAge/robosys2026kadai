@@ -9,8 +9,17 @@ def main():
     numbers = []
     for line in sys.stdin:
         line = line.strip()
-        if line:
+        if not line:
+            continue
+        try:
             numbers.append(float(line))
+        except ValueError:
+            print(f"Error: invalid number '{line}'", file=sys.stderr)
+            sys.exit(1)
+
+    if not numbers:
+        print("Error: no input data", file=sys.stderr)
+        sys.exit(1)
 
     n = len(numbers)
     total = sum(numbers)
