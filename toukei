@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # SPDX-FileCopyrightText: 2026 Yamada Itsuki
 # SPDX-License-Identifier: BSD-3-Clause
+
 import sys
 import math
 
@@ -35,13 +36,33 @@ def main():
     variance = sum((x - mean) ** 2 for x in numbers) / n
     std_dev = math.sqrt(variance)
 
-    print(f"count: {n}")
-    print(f"sum: {total:g}")
-    print(f"mean: {mean:g}")
-    print(f"median: {median:g}")
-    print(f"min: {min_val:g}")
-    print(f"max: {max_val:g}")
-    print(f"std: {std_dev:g}")
+    mode = sys.argv[1] if len(sys.argv) > 1 else "all"
+
+    if mode == "all":
+        print(f"count: {n}")
+        print(f"sum: {total:g}")
+        print(f"mean: {mean:g}")
+        print(f"median: {median:g}")
+        print(f"min: {min_val:g}")
+        print(f"max: {max_val:g}")
+        print(f"std: {std_dev:g}")
+    elif mode == "--count":
+        print(n)
+    elif mode == "--sum":
+        print(f"{total:g}")
+    elif mode == "--mean":
+        print(f"{mean:g}")
+    elif mode == "--median":
+        print(f"{median:g}")
+    elif mode == "--min":
+        print(f"{min_val:g}")
+    elif mode == "--max":
+        print(f"{max_val:g}")
+    elif mode == "--std":
+        print(f"{std_dev:g}")
+    else:
+        print(f"Error: unknown option '{mode}'", file=sys.stderr)
+        sys.exit(1)
 
 
 if __name__ == "__main__":
