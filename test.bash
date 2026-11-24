@@ -1,5 +1,5 @@
 #!/bin/bash
-# SPDX-FileCopyrightText: 2026 <あなたの名前（ローマ字）>
+# SPDX-FileCopyrightText: 2026 Yamada Itsuki
 # SPDX-License-Identifier: BSD-3-Clause
 
 ng () {
@@ -15,8 +15,10 @@ out=$(seq 5 | ./toukei)
 expected="count: 5
 sum: 15
 mean: 3
+median: 3
 min: 1
-max: 5"
+max: 5
+std: 1.41421"
 [ "${out}" = "${expected}" ] || ng "$LINENO"
 
 ### STRANGE INPUT ###
