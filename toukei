@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # SPDX-FileCopyrightText: 2026 Yamada Itsuki
 # SPDX-License-Identifier: BSD-3-Clause
-
 import sys
+import math
 
 
 def main():
@@ -24,12 +24,24 @@ def main():
     n = len(numbers)
     total = sum(numbers)
     mean = total / n
+    sorted_nums = sorted(numbers)
+    if n % 2 == 1:
+        median = sorted_nums[n // 2]
+    else:
+        median = (sorted_nums[n // 2 - 1] + sorted_nums[n // 2]) / 2.0
+
+    min_val = sorted_nums[0]
+    max_val = sorted_nums[-1]
+    variance = sum((x - mean) ** 2 for x in numbers) / n
+    std_dev = math.sqrt(variance)
 
     print(f"count: {n}")
     print(f"sum: {total:g}")
     print(f"mean: {mean:g}")
-    print(f"min: {min(numbers):g}")
-    print(f"max: {max(numbers):g}")
+    print(f"median: {median:g}")
+    print(f"min: {min_val:g}")
+    print(f"max: {max_val:g}")
+    print(f"std: {std_dev:g}")
 
 
 if __name__ == "__main__":
