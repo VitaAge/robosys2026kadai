@@ -20,6 +20,6 @@ Ubuntu 24.04 LTS
 
 ## インストール方法
 ```bash
-git clone [https://github.com/](https://github.com/)VitaAge/robosys2026kadai.git
+git clone https://github.com/VitaAge/robosys2026kadai.git
 cd robosys2026kadai
 chmod +x toukei
