@@ -34,6 +34,25 @@ out=$(printf -- "-10\n0\n10\n" | ./toukei --sum)
 [ "$?" = 0 ] || ng "$LINENO"
 [ "${out}" = "0" ] || ng "$LINENO"
 
+### SPECIAL SUM INPUT (810 / 1919) ###
+out=$(printf "800\n10\n" | ./toukei --sum)
+[ "$?" = 0 ] || ng "$LINENO"
+expected_810="810
+yarimasunesugi"
+[ "${out}" = "${expected_810}" ] || ng "$LINENO"
+
+out=$(printf "1900\n19\n" | ./toukei)
+[ "$?" = 0 ] || ng "$LINENO"
+expected_1919="count: 2
+sum: 1919
+mean: 959.5
+median: 959.5
+min: 19
+max: 1900
+std: 940.5
+yarimasunesugi"
+[ "${out}" = "${expected_1919}" ] || ng "$LINENO"
+
 ### STRANGE INPUT ###
 out=$(echo "あ" | ./toukei 2>/dev/null)
 [ "$?" = 1 ] || ng "$LINENO"
